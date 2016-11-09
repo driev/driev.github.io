@@ -12,21 +12,17 @@ function LunchCheckController($scope) {
     var commaSeparatedList = $scope.lunchMenu;
     var array = commaSeparatedList.split(',');
     numberOfItems = CountNotBlankValuesOnly(array);
-    console.log("### = " + numberOfItems);
-  };
-
-  $scope.tooMuchOrEnjoy = function (numberOfItems) {
     if (numberOfItems > 3) {
-      return "Too much!";
+      $scope.tooMuchOrEnjoy = "Too much!";
     } else {
-      return "Enjoy!";
+      $scope.tooMuchOrEnjoy = "Enjoy!";
     }
   };
 
   function CountNotBlankValuesOnly(array) {
     var count = 0;
     array.forEach(function(entry) {
-      if (entry) {
+      if (entry != null && entry.replace(" ", "") != "") {
         count++;
       }
     });
